@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "refresh-rn",
-    "slug": "refresh-rn",
+    "name": "learn-expo",
+    "slug": "learn-expo",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "movies",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

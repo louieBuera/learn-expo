@@ -3,6 +3,8 @@ import { ImageBackground, ImageSourcePropType, View } from "react-native";
 import { images } from "@/constants/images";
 import { Image, Text } from 'react-native';
 import { icons } from "@/constants/icons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as NavigationBar from 'expo-navigation-bar';
 
 const TabIcon = ({ focused, icon, title }: {
 	focused?: boolean,
@@ -28,7 +30,11 @@ const TabIcon = ({ focused, icon, title }: {
 	</View>
 }
 
+NavigationBar.setVisibilityAsync('hidden')
+
 const _layout = () => {
+	const insets = useSafeAreaInsets();
+
 	return (
 		<Tabs screenOptions={{
 			tabBarShowLabel: false,
@@ -42,7 +48,7 @@ const _layout = () => {
 				backgroundColor: '#0f0D23',
 				borderRadius: 50,
 				marginHorizontal: 20,
-				marginBottom: 36,
+				marginBottom: 16 + insets.bottom,
 				height: 52,
 				position: 'absolute',
 				overflow: 'hidden',

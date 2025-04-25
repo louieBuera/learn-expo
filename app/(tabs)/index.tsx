@@ -1,4 +1,4 @@
-import { ActivityIndicator, FlatList, Image, ImageBackground, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, ImageBackground, ScrollView, StatusBar, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
@@ -6,6 +6,8 @@ import SearchBar from "@/components/SearchBar";
 import { fetchMovies } from "@/services/api";
 import { useFetch } from "@/services/useFetch";
 import MovieCard from "@/components/MovieCard";
+import { useState } from "react";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
   const router = useRouter();
@@ -22,6 +24,13 @@ export default function Index() {
     <View
       className="flex-1 bg-primary"
     >
+      <StatusBar
+        animated={true}
+        backgroundColor="#61dafb"
+        // barStyle={statusBarStyle}
+        // showHideTransition={statusBarTransition}
+        hidden={true}
+      />
       <Image source={images.bg} className="absolute w-full z-0"/>
       <ScrollView className="flex-1 px-5"
         showsVerticalScrollIndicator={false}

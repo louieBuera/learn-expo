@@ -27,8 +27,6 @@ export default function Index() {
       <StatusBar
         animated={true}
         backgroundColor="#61dafb"
-        // barStyle={statusBarStyle}
-        // showHideTransition={statusBarTransition}
         hidden={true}
       />
       <Image source={images.bg} className="absolute w-full z-0"/>

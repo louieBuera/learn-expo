@@ -33,7 +33,7 @@ const MoviewDetails = () => {
 			<ScrollView contentContainerClassName='pb-80'>
 				<View>
 					<Image className="w-full h-[550px]"
-						source={{ uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}`}}
+						source={{ uri: `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`}}
 						resizeMode='cover'
 					/>
 				</View>

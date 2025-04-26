@@ -71,19 +71,10 @@ export default function Index() {
                   <Text className="text-xl text-white font-bold mb-3">Trending Movies</Text>
                   <FlatList
                     horizontal
-                    scrollEnabled={false}
                     data={trendingMovies}
                     renderItem={({item, index}) => <TrendingCard movie={item} index={index}/>}
-                    keyExtractor={(item) => item.movie_id.toString()}
+                    keyExtractor={(item) => item.$id.toString()}
                     ItemSeparatorComponent={() => <View className="mx-4"/>}
-                    // numColumns={3}
-                    // columnWrapperStyle={{
-                    //   justifyContent: 'flex-start',
-                    //   gap: 20,
-                    //   paddingRight: 5,
-                    //   marginBottom: 10
-                    // }}
-                    
                     className="mt-3 mb-4"
                   />
                 </View>

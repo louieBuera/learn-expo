@@ -3,6 +3,7 @@ import SearchBar from '@/components/SearchBar';
 import { icons } from '@/constants/icons';
 import { images } from '@/constants/images';
 import { fetchMovies } from '@/services/api';
+import { updateSearchCount } from '@/services/appwrite';
 import { useFetch } from '@/services/useFetch';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
@@ -32,6 +33,15 @@ const Search = () => {
 		return () => clearTimeout(timeoutId);
 	}, [query])
 
+	useEffect(() => {
+		if(movies && movies.length > 0 && movies?.[0]){
+			updateSearchCount(
+				query,
+				movies[0]
+			);
+		}
+	}, [movies]);
+
 	return (
 		<SafeAreaView className='flex-1 bg-primary'>
 			<Image source={images.bg} className="flex-1 absolute w-full z-0"
@@ -54,6 +64,7 @@ const Search = () => {
 						<SearchBar placeholder='Search movies ...'
 							value={query}
 							onChangeText={text => setQuery(text)}
+							refetch={refetch}
 						/>
 					</View>
 					{ moviesLoading && (

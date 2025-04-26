@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput } from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { icons } from '@/constants/icons'
 
@@ -7,25 +7,39 @@ interface Props {
   onPress?: () => void,
   value?: string,
   onChangeText?: (text: string) => void 
+  refetch?: () => void
 }
 
-const SearchBar = ({ placeholder, onPress, value = '', onChangeText }: Props) => {
+const SearchBar = ({
+  placeholder,
+  onPress,
+  value = '',
+  onChangeText,
+  refetch
+}: Props) => {
   const [val, setVal] = useState(value);
 
-  useEffect(() => {
-    const timeoutId = setTimeout(async () => {
-      if(onChangeText) onChangeText(val);
-    }, 500)
-    return () => clearTimeout(timeoutId);
-  }, [val])
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(async () => {
+  //     if(onChangeText) onChangeText(val);
+  //   }, 500)
+  //   return () => clearTimeout(timeoutId);
+  // }, [val])
 
   return (
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
-      <Image source={icons.search}
-        className="size-5"
-        resizeMode="contain"
-        tintColor="#ab8bff"
-      />
+      <TouchableOpacity
+        onPress={() => {
+          if(onChangeText) onChangeText(val);
+          if(refetch) refetch();
+        }}
+      >
+        <Image source={icons.search}
+          className="size-5"
+          resizeMode="contain"
+          tintColor="#ab8bff"
+        />
+      </TouchableOpacity>
       <TextInput
         onPress={onPress}
         placeholder={placeholder}

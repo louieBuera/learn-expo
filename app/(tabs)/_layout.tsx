@@ -1,10 +1,9 @@
 import { Tabs } from "expo-router";
-import { ImageBackground, ImageSourcePropType, View } from "react-native";
+import { ImageBackground, ImageSourcePropType, Platform, View } from "react-native";
 import { images } from "@/constants/images";
 import { Image, Text } from 'react-native';
 import { icons } from "@/constants/icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import * as NavigationBar from 'expo-navigation-bar';
 
 const TabIcon = ({ focused, icon, title }: {
 	focused?: boolean,
@@ -30,7 +29,7 @@ const TabIcon = ({ focused, icon, title }: {
 	</View>
 }
 
-NavigationBar.setVisibilityAsync('hidden')
+
 
 const _layout = () => {
 	const insets = useSafeAreaInsets();

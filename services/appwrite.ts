@@ -16,7 +16,6 @@ const database = new Databases(client);
 export const updateSearchCount = async (
   query: string, movie: Movie
 ) => {
-  console.log('attempting updateSearchCount', ENDPOINT);
   try {
     // check if a record of that search has already been stored
     const result = await database.listDocuments(
@@ -68,7 +67,6 @@ export const getTrendingMovies = async (): Promise<TrendingMovie[] | undefined> 
 
     return result.documents as unknown as TrendingMovie[];
   } catch (err) {
-    console.log(err);
     return undefined;
   }
 }

@@ -44,7 +44,7 @@ const Search = () => {
 				keyExtractor={(item) => item.id.toString()}
 				className="px-5"
 				numColumns={3}
-				columnWrapperClassName='justify-center gap-[16px] my-[16px]'
+				columnWrapperClassName='justify-around gap-[16px] my-[16px]'
 				contentContainerClassName='pb-100'
 				ListHeaderComponent={() => <>
 					<View className='w-full flex-row justify-center mt-20 items-center'>

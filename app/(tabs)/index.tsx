@@ -1,13 +1,10 @@
-import { ActivityIndicator, FlatList, Image, ImageBackground, ScrollView, StatusBar, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, ImageBackground, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
-import SearchBar from "@/components/SearchBar";
 import { fetchMovies } from "@/services/api";
 import { useFetch } from "@/services/useFetch";
 import MovieCard from "@/components/MovieCard";
-import { useState } from "react";
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
   const router = useRouter();
@@ -50,12 +47,20 @@ export default function Index() {
         ) : (
           <View>
             <View className="flex-1 mt-5">
-              <SearchBar
+              <TouchableOpacity className="flex-row items-center bg-dark-200 rounded-full px-5 py-4"
                 onPress={() => router.push("/search")}
-                placeholder="Search for a movie"
-              />
+              >
+                <Image source={icons.search}
+                  className="size-5"
+                  resizeMode="contain"
+                  tintColor="#ab8bff"
+                />
+                <Text className="text-light-200">
+                  {' '} Search for a movie
+                </Text>
+              </TouchableOpacity>
               <>
-                <Text className="text-lg text-white font-bold mt-5 mb-3">Latest Movies</Text>
+                <Text className="text-xl text-white font-bold mt-5 mb-3">Latest Movies</Text>
                 <FlatList
                   scrollEnabled={false}
                   data={movies}
@@ -65,7 +70,7 @@ export default function Index() {
                   keyExtractor={(item) => item.id.toString()}
                   numColumns={3}
                   columnWrapperStyle={{
-                    justifyContent: 'flex-start',
+                    justifyContent: 'space-around',
                     gap: 20,
                     paddingRight: 5,
                     marginBottom: 10
